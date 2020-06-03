@@ -7,6 +7,11 @@ Element create_int_element(int value)
   return element;
 }
 
+void display_int_element(Element number)
+{
+  printf("%d ", *(int *)number);
+}
+
 Bool is_lessthan_int(Element a, Element b)
 {
   return *(int *)a < *(int *)b;
@@ -22,4 +27,16 @@ int main()
   insert_into_tree(tree, create_int_element(0), &is_lessthan_int);
   insert_into_tree(tree, create_int_element(4), &is_lessthan_int);
   insert_into_tree(tree, create_int_element(6), &is_lessthan_int);
+
+  printf("in_order\n");
+  print_in_order(tree->root, &display_int_element);
+  printf("\n\n");
+
+  printf("pre_order\n");
+  print_pre_order(tree->root, &display_int_element);
+  printf("\n\n");
+
+  printf("post_order\n");
+  print_post_order(tree->root, &display_int_element);
+  printf("\n\n");
 }
