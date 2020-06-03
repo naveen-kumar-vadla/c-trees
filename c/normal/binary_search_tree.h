@@ -22,5 +22,6 @@ typedef Tree *Tree_ptr;
 
 Tree_ptr create_tree();
 Node_ptr create_node(int value);
+void insert_into_tree(Tree_ptr tree, int value);
 
 #endif
