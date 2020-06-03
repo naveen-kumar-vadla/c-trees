@@ -33,5 +33,6 @@ typedef void Display_Data(Element);
 
 Tree_ptr create_tree();
 Node_ptr create_node(Element value);
+void insert_into_tree(Tree_ptr tree, Element value, Compare_Method *comparator);
 
 #endif
