@@ -40,6 +40,26 @@ void insert_into_tree(Tree_ptr tree, int value)
   *pos_to_insert = create_node(value);
 }
 
+Bool search_in_tree(Tree_ptr tree, int value)
+{
+  Bool result = False;
+  Node_ptr p_walk = tree->root;
+  while (p_walk != NULL && !result)
+  {
+    if (p_walk->value == value)
+    {
+      result = True;
+    }
+    Node_ptr ptr_to_set_p_walk = p_walk->right;
+    if (value < p_walk->value)
+    {
+      ptr_to_set_p_walk = p_walk->left;
+    }
+    p_walk = ptr_to_set_p_walk;
+  }
+  return result;
+}
+
 void print_in_order(Node_ptr tree)
 {
   if (tree == NULL)
