@@ -30,7 +30,7 @@ void insert_into_tree(Tree_ptr tree, Element value, Compare_Method *comparator)
   {
     pos_to_insert = &p_walk->right;
     Node_ptr p_walk_to_set = p_walk->right;
-    if ((*comparator)(value, p_walk->value))
+    if ((*comparator)(value, p_walk->value) == Lesser)
     {
       pos_to_insert = &p_walk->left;
       p_walk_to_set = p_walk->left;
@@ -40,18 +40,18 @@ void insert_into_tree(Tree_ptr tree, Element value, Compare_Method *comparator)
   *pos_to_insert = create_node(value);
 }
 
-Bool search_in_node(Tree_ptr tree, Element value, Compare_Method *is_less_than, Compare_Method *is_equal_to)
+Bool search_in_node(Tree_ptr tree, Element value, Compare_Method *comparator)
 {
   Bool result = False;
   Node_ptr p_walk = tree->root;
   while (p_walk != NULL && !result)
   {
-    if ((*is_equal_to)(value, p_walk->value))
+    if ((*comparator)(value, p_walk->value) == Equal)
     {
       result = True;
     }
     Node_ptr ptr_to_set_p_walk = p_walk->right;
-    if ((*is_less_than)(value, p_walk->value))
+    if ((*comparator)(value, p_walk->value) == Lesser)
     {
       ptr_to_set_p_walk = p_walk->left;
     }

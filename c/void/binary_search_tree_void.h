@@ -10,6 +10,13 @@ typedef enum
   True
 } Bool;
 
+typedef enum
+{
+  Lesser = -1,
+  Equal = 0,
+  Greater = 2
+} Compare_Status;
+
 typedef void *Element;
 
 typedef struct node
@@ -28,14 +35,14 @@ typedef struct tree
 
 typedef Tree *Tree_ptr;
 
-typedef Bool Compare_Method(Element, Element);
+typedef Compare_Status Compare_Method(Element, Element);
 typedef void Display_Data(Element);
 
 Tree_ptr create_tree();
 Node_ptr create_node(Element value);
 
 void insert_into_tree(Tree_ptr tree, Element value, Compare_Method *comparator);
-Bool search_in_node(Tree_ptr tree, Element value, Compare_Method *is_less_than, Compare_Method *is_equal_to);
+Bool search_in_node(Tree_ptr tree, Element value, Compare_Method *comparator);
 
 void print_in_order(Node_ptr tree, Display_Data *displayer);
 void print_pre_order(Node_ptr tree, Display_Data *displayer);
