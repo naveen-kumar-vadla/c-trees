@@ -40,6 +40,26 @@ void insert_into_tree(Tree_ptr tree, Element value, Compare_Method *comparator)
   *pos_to_insert = create_node(value);
 }
 
+Bool search_in_node(Tree_ptr tree, Element value, Compare_Method *is_less_than, Compare_Method *is_equal_to)
+{
+  Bool result = False;
+  Node_ptr p_walk = tree->root;
+  while (p_walk != NULL && !result)
+  {
+    if ((*is_equal_to)(value, p_walk->value))
+    {
+      result = True;
+    }
+    Node_ptr ptr_to_set_p_walk = p_walk->right;
+    if ((*is_less_than)(value, p_walk->value))
+    {
+      ptr_to_set_p_walk = p_walk->left;
+    }
+    p_walk = ptr_to_set_p_walk;
+  }
+  return result;
+}
+
 void print_in_order(Node_ptr tree, Display_Data *displayer)
 {
   if (tree == NULL)
