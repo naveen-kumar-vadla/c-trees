@@ -24,4 +24,8 @@ Tree_ptr create_tree();
 Node_ptr create_node(int value);
 void insert_into_tree(Tree_ptr tree, int value);
 
+void print_in_order(Node_ptr tree);
+void print_pre_order(Node_ptr tree);
+void print_post_order(Node_ptr tree);
+
 #endif
