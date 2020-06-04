@@ -1,15 +1,5 @@
 #include "binary_search_tree.h"
 
-Tree_ptr create_tree()
-{
-  Tree_ptr tree = malloc(sizeof(Tree));
-  if (tree != NULL)
-  {
-    tree->root = NULL;
-  }
-  return tree;
-}
-
 Node_ptr create_node(int value)
 {
   Node_ptr new_node = malloc(sizeof(Node));
@@ -22,10 +12,10 @@ Node_ptr create_node(int value)
   return new_node;
 }
 
-void insert_into_tree(Tree_ptr tree, int value)
+Node_ptr insert_into_tree(Node_ptr root, int value)
 {
-  Node_ptr *pos_to_insert = &tree->root;
-  Node_ptr p_walk = tree->root;
+  Node_ptr *pos_to_insert = &root;
+  Node_ptr p_walk = root;
   while (p_walk != NULL)
   {
     pos_to_insert = &p_walk->right;
@@ -38,12 +28,13 @@ void insert_into_tree(Tree_ptr tree, int value)
     p_walk = p_walk_to_set;
   }
   *pos_to_insert = create_node(value);
+  return root;
 }
 
-Bool search_in_tree(Tree_ptr tree, int value)
+Bool search_in_tree(Node_ptr root, int value)
 {
   Bool result = False;
-  Node_ptr p_walk = tree->root;
+  Node_ptr p_walk = root;
   while (p_walk != NULL && !result)
   {
     if (p_walk->value == value)

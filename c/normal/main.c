@@ -2,25 +2,25 @@
 
 int main()
 {
-  Tree_ptr tree = create_tree();
-  insert_into_tree(tree, 3);
-  insert_into_tree(tree, 1);
-  insert_into_tree(tree, 5);
-  insert_into_tree(tree, 2);
-  insert_into_tree(tree, 0);
-  insert_into_tree(tree, 4);
-  insert_into_tree(tree, 6);
+  Node_ptr tree = NULL;
+  tree = insert_into_tree(tree, 3);
+  tree = insert_into_tree(tree, 1);
+  tree = insert_into_tree(tree, 5);
+  tree = insert_into_tree(tree, 2);
+  tree = insert_into_tree(tree, 0);
+  tree = insert_into_tree(tree, 4);
+  tree = insert_into_tree(tree, 6);
 
   printf("in_order\n");
-  print_in_order(tree->root);
+  print_in_order(tree);
   printf("\n\n");
 
   printf("pre_order\n");
-  print_pre_order(tree->root);
+  print_pre_order(tree);
   printf("\n\n");
 
   printf("post_order\n");
-  print_post_order(tree->root);
+  print_post_order(tree);
   printf("\n\n");
 
   Bool result = search_in_tree(tree, 3);
