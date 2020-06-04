@@ -51,6 +51,44 @@ Bool search_in_tree(Node_ptr root, int value)
   return result;
 }
 
+void swap_two_integers(int *a, int *b)
+{
+  int temp = *a;
+  *a = *b;
+  *b = temp;
+}
+
+Node_ptr get_min_of_right(Node_ptr root)
+{
+  Node_ptr min_of_right = root;
+  while (min_of_right && min_of_right->left != NULL)
+  {
+    min_of_right = min_of_right->left;
+  }
+  return min_of_right;
+}
+
+Node_ptr delete_node(Node_ptr root, int value)
+{
+  if (root == NULL)
+    return root;
+  if (value < root->value)
+    root->left = delete_node(root->left, value);
+  if (value > root->value)
+    root->right = delete_node(root->right, value);
+  if (value == root->value)
+  {
+    if (root->left == NULL)
+      return root->right;
+    if (root->right == NULL)
+      return root->left;
+    Node_ptr minOfRight = get_min_of_right(root->right);
+    swap_two_integers(&root->value, &minOfRight->value);
+    root->right = delete_node(root->right, value);
+  }
+  return root;
+}
+
 void print_in_order(Node_ptr tree)
 {
   if (tree == NULL)

@@ -24,6 +24,10 @@ Node_ptr create_node(int value);
 Node_ptr insert_into_tree(Node_ptr root, int value);
 Bool search_in_tree(Node_ptr root, int value);
 
+void swap_two_integers(int *a, int *b);
+Node_ptr get_min_of_right(Node_ptr root);
+Node_ptr delete_node(Node_ptr root, int value);
+
 void print_in_order(Node_ptr tree);
 void print_pre_order(Node_ptr tree);
 void print_post_order(Node_ptr tree);
