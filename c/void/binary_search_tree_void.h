@@ -28,21 +28,13 @@ typedef struct node
 
 typedef Node *Node_ptr;
 
-typedef struct tree
-{
-  Node_ptr root;
-} Tree;
-
-typedef Tree *Tree_ptr;
-
 typedef Compare_Status Compare_Method(Element, Element);
 typedef void Display_Data(Element);
 
-Tree_ptr create_tree();
 Node_ptr create_node(Element value);
 
-void insert_into_tree(Tree_ptr tree, Element value, Compare_Method *comparator);
-Bool search_in_node(Tree_ptr tree, Element value, Compare_Method *comparator);
+Node_ptr insert_into_tree(Node_ptr root, Element value, Compare_Method *comparator);
+Bool search_in_node(Node_ptr root, Element value, Compare_Method *comparator);
 
 void print_in_order(Node_ptr tree, Display_Data *displayer);
 void print_pre_order(Node_ptr tree, Display_Data *displayer);

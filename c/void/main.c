@@ -54,25 +54,25 @@ Compare_Status comparator_char(Element a, Element b)
 
 int main()
 {
-  Tree_ptr tree = create_tree();
-  insert_into_tree(tree, create_int_element(3), &comparator_int);
-  insert_into_tree(tree, create_int_element(1), &comparator_int);
-  insert_into_tree(tree, create_int_element(5), &comparator_int);
-  insert_into_tree(tree, create_int_element(2), &comparator_int);
-  insert_into_tree(tree, create_int_element(0), &comparator_int);
-  insert_into_tree(tree, create_int_element(4), &comparator_int);
-  insert_into_tree(tree, create_int_element(6), &comparator_int);
+  Node_ptr tree = NULL;
+  tree = insert_into_tree(tree, create_int_element(3), &comparator_int);
+  tree = insert_into_tree(tree, create_int_element(1), &comparator_int);
+  tree = insert_into_tree(tree, create_int_element(5), &comparator_int);
+  tree = insert_into_tree(tree, create_int_element(2), &comparator_int);
+  tree = insert_into_tree(tree, create_int_element(0), &comparator_int);
+  tree = insert_into_tree(tree, create_int_element(4), &comparator_int);
+  tree = insert_into_tree(tree, create_int_element(6), &comparator_int);
 
   printf("in_order\n");
-  print_in_order(tree->root, &display_int_element);
+  print_in_order(tree, &display_int_element);
   printf("\n\n");
 
   printf("pre_order\n");
-  print_pre_order(tree->root, &display_int_element);
+  print_pre_order(tree, &display_int_element);
   printf("\n\n");
 
   printf("post_order\n");
-  print_post_order(tree->root, &display_int_element);
+  print_post_order(tree, &display_int_element);
   printf("\n\n");
 
   Bool result = search_in_node(tree, create_int_element(3), &comparator_int);
@@ -100,25 +100,25 @@ int main()
   printf("%d is %s in the list\n", 9, result ? "present" : "not present");
   printf("\n");
 
-  tree = create_tree();
-  insert_into_tree(tree, create_char_element('d'), &comparator_char);
-  insert_into_tree(tree, create_char_element('b'), &comparator_char);
-  insert_into_tree(tree, create_char_element('f'), &comparator_char);
-  insert_into_tree(tree, create_char_element('c'), &comparator_char);
-  insert_into_tree(tree, create_char_element('a'), &comparator_char);
-  insert_into_tree(tree, create_char_element('e'), &comparator_char);
-  insert_into_tree(tree, create_char_element('g'), &comparator_char);
+  tree = NULL;
+  tree = insert_into_tree(tree, create_char_element('d'), &comparator_char);
+  tree = insert_into_tree(tree, create_char_element('b'), &comparator_char);
+  tree = insert_into_tree(tree, create_char_element('f'), &comparator_char);
+  tree = insert_into_tree(tree, create_char_element('c'), &comparator_char);
+  tree = insert_into_tree(tree, create_char_element('a'), &comparator_char);
+  tree = insert_into_tree(tree, create_char_element('e'), &comparator_char);
+  tree = insert_into_tree(tree, create_char_element('g'), &comparator_char);
 
   printf("in_order\n");
-  print_in_order(tree->root, &display_char_element);
+  print_in_order(tree, &display_char_element);
   printf("\n\n");
 
   printf("pre_order\n");
-  print_pre_order(tree->root, &display_char_element);
+  print_pre_order(tree, &display_char_element);
   printf("\n\n");
 
   printf("post_order\n");
-  print_post_order(tree->root, &display_char_element);
+  print_post_order(tree, &display_char_element);
   printf("\n\n");
 
   result = search_in_node(tree, create_char_element('d'), &comparator_char);
