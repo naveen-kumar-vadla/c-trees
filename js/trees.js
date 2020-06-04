@@ -28,6 +28,24 @@ const insert_without_recur = (tree, value) => {
   return tree;
 };
 
+const search_node = (tree, value) => {
+  let result = false;
+  let walker = tree;
+  while (walker != null && !result) {
+    if (value == walker.value) result = true;
+    if (value < walker.value) walker = walker.left;
+    else walker = walker.right;
+  }
+  return result;
+};
+
+const printInOrder = tree => {
+  if (tree == null) return;
+  printInOrder(tree.left);
+  console.log(tree.value);
+  printInOrder(tree.right);
+};
+
 const createRandomArray = length => {
   const array = [];
   while (array.length < length) {
@@ -38,19 +56,23 @@ const createRandomArray = length => {
 };
 
 const main = () => {
-  for (const length in [10, 100, 1000]) {
+  for (const length of [10, 100, 1000]) {
     const values = createRandomArray(length);
     const tree1 = values.reduce(insert_with_recur, null);
     const tree2 = values.reduce(insert_without_recur, null);
     assert.deepStrictEqual(tree1, tree2);
   }
+
+  const values = [3, 1, 5, 0, 2, 4, 6];
+  const tree = values.reduce(insert_without_recur, null);
+
+  console.log('tree =>');
+  printInOrder(tree);
+
+  for (const value of [...values, 9]) {
+    const result = search_node(tree, value);
+    console.log(value, 'is', result ? '' : 'not', 'present in the tree.');
+  }
 };
 
 main();
-
-/* 
-4 to insert
-  5
-3   6
-
-*/
