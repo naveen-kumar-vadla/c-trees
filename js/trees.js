@@ -39,6 +39,28 @@ const search_node = (tree, value) => {
   return result;
 };
 
+const getMinOfRight = tree => {
+  let minOfRight = tree;
+  while (minOfRight && minOfRight.left != null) {
+    minOfRight = minOfRight.left;
+  }
+  return minOfRight;
+};
+
+const delete_node = (tree, value) => {
+  if (tree == null) return tree;
+  if (value < tree.value) tree.left = delete_node(tree.left, value);
+  if (value > tree.value) tree.right = delete_node(tree.right, value);
+  if (value == tree.value) {
+    if (tree.right == null) return tree.left;
+    if (tree.left == null) return tree.right;
+    const minOfRight = getMinOfRight(tree.right);
+    [tree.value, minOfRight.value] = [minOfRight.value, tree.value];
+    tree.right = delete_node(tree.right, value);
+  }
+  return tree;
+};
+
 const printInOrder = tree => {
   if (tree == null) return;
   printInOrder(tree.left);
@@ -63,8 +85,8 @@ const main = () => {
     assert.deepStrictEqual(tree1, tree2);
   }
 
-  const values = [3, 1, 5, 0, 2, 4, 6];
-  const tree = values.reduce(insert_without_recur, null);
+  let values = [3, 1, 5, 0, 2, 4, 6];
+  let tree = values.reduce(insert_without_recur, null);
 
   console.log('tree =>');
   printInOrder(tree);
@@ -73,6 +95,36 @@ const main = () => {
     const result = search_node(tree, value);
     console.log(value, 'is', result ? '' : 'not', 'present in the tree.');
   }
+
+  console.log('deletion of node (node with 2 children)');
+
+  tree = [3, 1, 5, 0, 2, 4, 6].reduce(insert_without_recur, null);
+  console.log('tree =>');
+  printInOrder(tree);
+
+  tree = delete_node(tree, 3);
+  console.log('tree =>');
+  printInOrder(tree);
+
+  console.log('deletion of node (node with 1 children)');
+
+  tree = [3, 1, 5, 0, 2, 4].reduce(insert_without_recur, null);
+  console.log('tree =>');
+  printInOrder(tree);
+
+  tree = delete_node(tree, 5);
+  console.log('tree =>');
+  printInOrder(tree);
+
+  console.log('deletion of node (node with 0 children)');
+
+  tree = [3, 1, 5, 0, 2].reduce(insert_without_recur, null);
+  console.log('tree =>');
+  printInOrder(tree);
+
+  tree = delete_node(tree, 5);
+  console.log('tree =>');
+  printInOrder(tree);
 };
 
 main();
