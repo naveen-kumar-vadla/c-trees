@@ -51,13 +51,6 @@ Bool search_in_tree(Node_ptr root, int value)
   return result;
 }
 
-void swap_two_integers(int *a, int *b)
-{
-  int temp = *a;
-  *a = *b;
-  *b = temp;
-}
-
 Node_ptr get_min_of_right(Node_ptr root)
 {
   Node_ptr min_of_right = root;
@@ -83,8 +76,8 @@ Node_ptr delete_node(Node_ptr root, int value)
     if (root->right == NULL)
       return root->left;
     Node_ptr minOfRight = get_min_of_right(root->right);
-    swap_two_integers(&root->value, &minOfRight->value);
-    root->right = delete_node(root->right, value);
+    root->value = minOfRight->value;
+    root->right = delete_node(root->right, minOfRight->value);
   }
   return root;
 }

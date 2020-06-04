@@ -55,8 +55,8 @@ const delete_node = (tree, value) => {
     if (tree.right == null) return tree.left;
     if (tree.left == null) return tree.right;
     const minOfRight = getMinOfRight(tree.right);
-    [tree.value, minOfRight.value] = [minOfRight.value, tree.value];
-    tree.right = delete_node(tree.right, value);
+    tree.value = minOfRight.value;
+    tree.right = delete_node(tree.right, minOfRight.value);
   }
   return tree;
 };

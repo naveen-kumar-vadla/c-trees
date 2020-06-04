@@ -51,13 +51,6 @@ Bool search_in_node(Node_ptr root, Element value, Compare_Method *comparator)
   return result;
 }
 
-void swap_two_elements(Element *a, Element *b)
-{
-  Element temp = *a;
-  *a = *b;
-  *b = temp;
-}
-
 Node_ptr get_min_of_right(Node_ptr root)
 {
   Node_ptr min_of_right = root;
@@ -84,8 +77,8 @@ Node_ptr delete_node(Node_ptr root, Element value, Compare_Method *comparator)
     if (root->right == NULL)
       return root->left;
     Node_ptr minOfRight = get_min_of_right(root->right);
-    swap_two_elements(&root->value, &minOfRight->value);
-    root->right = delete_node(root->right, value, comparator);
+    root->value = minOfRight->value;
+    root->right = delete_node(root->right, minOfRight->value, comparator);
   }
   return root;
 }
