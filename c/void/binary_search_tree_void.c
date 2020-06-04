@@ -51,6 +51,45 @@ Bool search_in_node(Node_ptr root, Element value, Compare_Method *comparator)
   return result;
 }
 
+void swap_two_elements(Element *a, Element *b)
+{
+  Element temp = *a;
+  *a = *b;
+  *b = temp;
+}
+
+Node_ptr get_min_of_right(Node_ptr root)
+{
+  Node_ptr min_of_right = root;
+  while (min_of_right && min_of_right->left != NULL)
+  {
+    min_of_right = min_of_right->left;
+  }
+  return min_of_right;
+}
+
+Node_ptr delete_node(Node_ptr root, Element value, Compare_Method *comparator)
+{
+  if (root == NULL)
+    return root;
+  Compare_Status result = (*comparator)(value, root->value);
+  if (result == Lesser)
+    root->left = delete_node(root->left, value, comparator);
+  if (result == Greater)
+    root->right = delete_node(root->right, value, comparator);
+  if (result == Equal)
+  {
+    if (root->left == NULL)
+      return root->right;
+    if (root->right == NULL)
+      return root->left;
+    Node_ptr minOfRight = get_min_of_right(root->right);
+    swap_two_elements(&root->value, &minOfRight->value);
+    root->right = delete_node(root->right, value, comparator);
+  }
+  return root;
+}
+
 void print_in_order(Node_ptr tree, Display_Data *displayer)
 {
   if (tree == NULL)

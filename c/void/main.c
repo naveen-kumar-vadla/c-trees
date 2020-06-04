@@ -63,6 +63,8 @@ int main()
   tree = insert_into_tree(tree, create_int_element(4), &comparator_int);
   tree = insert_into_tree(tree, create_int_element(6), &comparator_int);
 
+  printf("Before Deletion\n");
+
   printf("in_order\n");
   print_in_order(tree, &display_int_element);
   printf("\n\n");
@@ -76,29 +78,25 @@ int main()
   printf("\n\n");
 
   Bool result = search_in_node(tree, create_int_element(3), &comparator_int);
-  printf("%d is %s in the list\n", 3, result ? "present" : "not present");
+  printf("%d is %s in the list\n\n", 3, result ? "present" : "not present");
 
-  result = search_in_node(tree, create_int_element(1), &comparator_int);
-  printf("%d is %s in the list\n", 1, result ? "present" : "not present");
+  tree = delete_node(tree, create_int_element(3), &comparator_int);
+  printf("After Deletion\n");
 
-  result = search_in_node(tree, create_int_element(5), &comparator_int);
-  printf("%d is %s in the list\n", 5, result ? "present" : "not present");
+  printf("in_order\n");
+  print_in_order(tree, &display_int_element);
+  printf("\n\n");
 
-  result = search_in_node(tree, create_int_element(2), &comparator_int);
-  printf("%d is %s in the list\n", 2, result ? "present" : "not present");
+  printf("pre_order\n");
+  print_pre_order(tree, &display_int_element);
+  printf("\n\n");
 
-  result = search_in_node(tree, create_int_element(0), &comparator_int);
-  printf("%d is %s in the list\n", 0, result ? "present" : "not present");
+  printf("post_order\n");
+  print_post_order(tree, &display_int_element);
+  printf("\n\n");
 
-  result = search_in_node(tree, create_int_element(4), &comparator_int);
-  printf("%d is %s in the list\n", 4, result ? "present" : "not present");
-
-  result = search_in_node(tree, create_int_element(6), &comparator_int);
-  printf("%d is %s in the list\n", 6, result ? "present" : "not present");
-
-  result = search_in_node(tree, create_int_element(9), &comparator_int);
-  printf("%d is %s in the list\n", 9, result ? "present" : "not present");
-  printf("\n");
+  result = search_in_node(tree, create_int_element(3), &comparator_int);
+  printf("%d is %s in the list\n\n", 3, result ? "present" : "not present");
 
   tree = NULL;
   tree = insert_into_tree(tree, create_char_element('d'), &comparator_char);
@@ -108,6 +106,8 @@ int main()
   tree = insert_into_tree(tree, create_char_element('a'), &comparator_char);
   tree = insert_into_tree(tree, create_char_element('e'), &comparator_char);
   tree = insert_into_tree(tree, create_char_element('g'), &comparator_char);
+
+  printf("Before Deletion\n");
 
   printf("in_order\n");
   print_in_order(tree, &display_char_element);
@@ -122,27 +122,23 @@ int main()
   printf("\n\n");
 
   result = search_in_node(tree, create_char_element('d'), &comparator_char);
-  printf("%c is %s in the list\n", 'd', result ? "present" : "not present");
+  printf("%c is %s in the list\n\n", 'd', result ? "present" : "not present");
 
-  result = search_in_node(tree, create_char_element('b'), &comparator_char);
-  printf("%c is %s in the list\n", 'b', result ? "present" : "not present");
+  tree = delete_node(tree, create_char_element('d'), &comparator_char);
+  printf("After Deletion\n");
 
-  result = search_in_node(tree, create_char_element('f'), &comparator_char);
-  printf("%c is %s in the list\n", 'f', result ? "present" : "not present");
+  printf("in_order\n");
+  print_in_order(tree, &display_char_element);
+  printf("\n\n");
 
-  result = search_in_node(tree, create_char_element('c'), &comparator_char);
-  printf("%c is %s in the list\n", 'c', result ? "present" : "not present");
+  printf("pre_order\n");
+  print_pre_order(tree, &display_char_element);
+  printf("\n\n");
 
-  result = search_in_node(tree, create_char_element('a'), &comparator_char);
-  printf("%c is %s in the list\n", 'a', result ? "present" : "not present");
+  printf("post_order\n");
+  print_post_order(tree, &display_char_element);
+  printf("\n\n");
 
-  result = search_in_node(tree, create_char_element('e'), &comparator_char);
-  printf("%c is %s in the list\n", 'e', result ? "present" : "not present");
-
-  result = search_in_node(tree, create_char_element('g'), &comparator_char);
-  printf("%c is %s in the list\n", 'g', result ? "present" : "not present");
-
-  result = search_in_node(tree, create_char_element('j'), &comparator_char);
-  printf("%c is %s in the list\n", 'j', result ? "present" : "not present");
-  printf("\n");
+  result = search_in_node(tree, create_char_element('d'), &comparator_char);
+  printf("%c is %s in the list\n\n", 'd', result ? "present" : "not present");
 }
