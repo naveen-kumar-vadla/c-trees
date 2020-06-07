@@ -82,6 +82,59 @@ Node_ptr delete_node(Node_ptr root, int value)
   return root;
 }
 
+Node_ptr get_node_of(Node_ptr root, int value)
+{
+  if (root == NULL || value == root->value)
+    return root;
+  if (value < root->value)
+    return get_node_of(root->left, value);
+  return get_node_of(root->right, value);
+}
+
+Node_ptr rotate_right(Node_ptr root, Node_ptr pivot)
+{
+  if (root == NULL)
+    return root;
+  if (pivot->value < root->value)
+  {
+    root->left = rotate_right(root->left, pivot);
+    return root;
+  }
+  if (pivot->value > root->value)
+  {
+    root->right = rotate_right(root->right, pivot);
+    return root;
+  }
+  Node_ptr pivot_left = pivot->left;
+  if (pivot_left == NULL)
+    return pivot;
+  pivot->left = pivot_left->right;
+  pivot_left->right = pivot;
+  return pivot_left;
+}
+
+Node_ptr rotate_left(Node_ptr root, Node_ptr pivot)
+{
+  if (root == NULL)
+    return root;
+  if (pivot->value < root->value)
+  {
+    root->left = rotate_left(root->left, pivot);
+    return root;
+  }
+  if (pivot->value > root->value)
+  {
+    root->right = rotate_left(root->right, pivot);
+    return root;
+  }
+  Node_ptr pivot_right = pivot->right;
+  if (pivot_right == NULL)
+    return pivot;
+  pivot->right = pivot_right->left;
+  pivot_right->left = pivot;
+  return pivot_right;
+}
+
 void print_in_order(Node_ptr tree)
 {
   if (tree == NULL)
