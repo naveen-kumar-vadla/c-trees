@@ -1,5 +1,12 @@
 const Traversals = require('./traversals');
-const { insert_node, search_node, delete_node } = require('./tree_with_recur');
+const {
+  insert_node,
+  search_node,
+  delete_node,
+  rotate_left,
+  rotate_right,
+  get_node_of,
+} = require('./tree_with_recur');
 
 const main = () => {
   let values = [3, 1, 5, 0, 2, 4, 6];
@@ -17,6 +24,29 @@ const main = () => {
 
   result = search_node(tree, 3);
   console.log(3, 'is', result ? '' : 'not', 'present in the tree.');
+
+  tree = values.reduce(insert_node, null);
+  console.log('Rotate Right 1');
+  console.log('before =>');
+  Traversals.print_pre_order(tree);
+  tree = rotate_right(tree, get_node_of(tree, 1));
+  console.log('after =>');
+  Traversals.print_pre_order(tree);
+
+  console.log('Rotate Left 0');
+  console.log('before =>');
+  Traversals.print_pre_order(tree);
+  tree = rotate_left(tree, get_node_of(tree, 0));
+  console.log('after =>');
+  Traversals.print_pre_order(tree);
 };
 
 main();
+
+/*
+     3
+   /   \
+  1     5
+ / \   / \
+0   2 4   6
+*/

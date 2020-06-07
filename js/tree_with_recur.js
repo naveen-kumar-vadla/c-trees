@@ -38,4 +38,51 @@ const delete_node = (tree, value) => {
   return tree;
 };
 
-module.exports = { insert_node, search_node, delete_node };
+const get_node_of = (tree, value) => {
+  if (tree == null || value == tree.value) return tree;
+  if (value < tree.value) return get_node_of(tree.left, value);
+  return get_node_of(tree.right, value);
+};
+
+const rotate_right = (tree, pivot) => {
+  if (tree == null) return tree;
+  if (pivot.value < tree.value) {
+    tree.left = rotate_right(tree.left, pivot);
+    return tree;
+  }
+  if (pivot.value > tree.value) {
+    tree.right = rotate_right(tree.right, pivot);
+    return tree;
+  }
+  const pivot_Left = pivot.left;
+  if (pivot_Left == null) return pivot;
+  pivot.left = pivot_Left.right;
+  pivot_Left.right = pivot;
+  return pivot_Left;
+};
+
+const rotate_left = (tree, pivot) => {
+  if (tree == null) return tree;
+  if (pivot.value < tree.value) {
+    tree.left = rotate_left(tree.left, pivot);
+    return tree;
+  }
+  if (pivot.value > tree.value) {
+    tree.right = rotate_left(tree.right, pivot);
+    return tree;
+  }
+  const pivot_Right = pivot.right;
+  if (pivot_Right == null) return pivot;
+  pivot.right = pivot_Right.left;
+  pivot_Right.left = pivot;
+  return pivot_Right;
+};
+
+module.exports = {
+  insert_node,
+  search_node,
+  delete_node,
+  rotate_left,
+  rotate_right,
+  get_node_of,
+};
