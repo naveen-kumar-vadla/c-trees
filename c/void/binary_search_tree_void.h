@@ -4,6 +4,8 @@
 #ifndef __BINARY_SEARCH_TREE_VOID_H_
 #define __BINARY_SEARCH_TREE_VOID_H_
 
+#include "node_void.h"
+
 typedef enum
 {
   False,
@@ -16,17 +18,6 @@ typedef enum
   Equal = 0,
   Greater = 1
 } Compare_Status;
-
-typedef void *Element;
-
-typedef struct node
-{
-  Element value;
-  struct node *left;
-  struct node *right;
-} Node;
-
-typedef Node *Node_ptr;
 
 typedef Compare_Status Compare_Method(Element, Element);
 typedef void Display_Data(Element);
