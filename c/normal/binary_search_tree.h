@@ -4,20 +4,13 @@
 #ifndef __BINARY_SEARCH_TREE_H_
 #define __BINARY_SEARCH_TREE_H_
 
+#include "node.h"
+
 typedef enum
 {
   False,
   True
 } Bool;
-
-typedef struct node
-{
-  int value;
-  struct node *left;
-  struct node *right;
-} Node;
-
-typedef Node *Node_ptr;
 
 Node_ptr create_node(int value);
 
