@@ -39,6 +39,10 @@ Bool search_in_node(Node_ptr root, Element value, Compare_Method *comparator);
 Node_ptr get_min_of_right(Node_ptr root);
 Node_ptr delete_node(Node_ptr root, Element value, Compare_Method *comparator);
 
+Node_ptr get_node_of(Node_ptr root, Element value, Compare_Method *comparator);
+Node_ptr rotate_right(Node_ptr root, Node_ptr pivot, Compare_Method *comparator);
+Node_ptr rotate_left(Node_ptr root, Node_ptr pivot, Compare_Method *comparator);
+
 void print_in_order(Node_ptr tree, Display_Data *displayer);
 void print_pre_order(Node_ptr tree, Display_Data *displayer);
 void print_post_order(Node_ptr tree, Display_Data *displayer);

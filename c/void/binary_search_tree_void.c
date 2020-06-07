@@ -83,6 +83,62 @@ Node_ptr delete_node(Node_ptr root, Element value, Compare_Method *comparator)
   return root;
 }
 
+Node_ptr get_node_of(Node_ptr root, Element value, Compare_Method *comparator)
+{
+  Compare_Status result = (*comparator)(value, root->value);
+  if (root == NULL || result == Equal)
+    return root;
+  if (result == Lesser)
+    return get_node_of(root->left, value, comparator);
+  return get_node_of(root->right, value, comparator);
+}
+
+Node_ptr rotate_right(Node_ptr root, Node_ptr pivot, Compare_Method *comparator)
+{
+  if (root == NULL)
+    return root;
+  Compare_Status result = (*comparator)(pivot->value, root->value);
+  if (result == Lesser)
+  {
+    root->left = rotate_right(root->left, pivot, comparator);
+    return root;
+  }
+  if (result == Greater)
+  {
+    root->right = rotate_right(root->right, pivot, comparator);
+    return root;
+  }
+  Node_ptr pivot_left = pivot->left;
+  if (pivot_left == NULL)
+    return pivot;
+  pivot->left = pivot_left->right;
+  pivot_left->right = pivot;
+  return pivot_left;
+}
+
+Node_ptr rotate_left(Node_ptr root, Node_ptr pivot, Compare_Method *comparator)
+{
+  if (root == NULL)
+    return root;
+  Compare_Status result = (*comparator)(pivot->value, root->value);
+  if (result == Lesser)
+  {
+    root->left = rotate_left(root->left, pivot, comparator);
+    return root;
+  }
+  if (result == Greater)
+  {
+    root->right = rotate_left(root->right, pivot, comparator);
+    return root;
+  }
+  Node_ptr pivot_right = pivot->right;
+  if (pivot_right == NULL)
+    return pivot;
+  pivot->right = pivot_right->left;
+  pivot_right->left = pivot;
+  return pivot_right;
+}
+
 void print_in_order(Node_ptr tree, Display_Data *displayer)
 {
   if (tree == NULL)

@@ -99,6 +99,29 @@ int main()
   printf("%d is %s in the list\n\n", 3, result ? "present" : "not present");
 
   tree = NULL;
+  tree = insert_into_tree(tree, create_int_element(3), &comparator_int);
+  tree = insert_into_tree(tree, create_int_element(1), &comparator_int);
+  tree = insert_into_tree(tree, create_int_element(5), &comparator_int);
+  tree = insert_into_tree(tree, create_int_element(2), &comparator_int);
+  tree = insert_into_tree(tree, create_int_element(0), &comparator_int);
+  tree = insert_into_tree(tree, create_int_element(4), &comparator_int);
+  tree = insert_into_tree(tree, create_int_element(6), &comparator_int);
+
+  printf("Rotate Right 1");
+  printf("\nbefore => ");
+  print_pre_order(tree, &display_int_element);
+  tree = rotate_right(tree, get_node_of(tree, create_int_element(1), &comparator_int), &comparator_int);
+  printf("\nafter => ");
+  print_pre_order(tree, &display_int_element);
+
+  printf("\n\nRotate Left 0");
+  printf("\nbefore => ");
+  print_pre_order(tree, &display_int_element);
+  tree = rotate_left(tree, get_node_of(tree, create_int_element(0), &comparator_int), &comparator_int);
+  printf("\nafter => ");
+  print_pre_order(tree, &display_int_element);
+
+  tree = NULL;
   tree = insert_into_tree(tree, create_char_element('d'), &comparator_char);
   tree = insert_into_tree(tree, create_char_element('b'), &comparator_char);
   tree = insert_into_tree(tree, create_char_element('f'), &comparator_char);
@@ -141,4 +164,28 @@ int main()
 
   result = search_in_node(tree, create_char_element('d'), &comparator_char);
   printf("%c is %s in the list\n\n", 'd', result ? "present" : "not present");
+
+  tree = NULL;
+  tree = insert_into_tree(tree, create_char_element('d'), &comparator_char);
+  tree = insert_into_tree(tree, create_char_element('b'), &comparator_char);
+  tree = insert_into_tree(tree, create_char_element('f'), &comparator_char);
+  tree = insert_into_tree(tree, create_char_element('c'), &comparator_char);
+  tree = insert_into_tree(tree, create_char_element('a'), &comparator_char);
+  tree = insert_into_tree(tree, create_char_element('e'), &comparator_char);
+  tree = insert_into_tree(tree, create_char_element('g'), &comparator_char);
+
+  printf("Rotate Right 1");
+  printf("\nbefore => ");
+  print_pre_order(tree, &display_char_element);
+  tree = rotate_right(tree, get_node_of(tree, create_char_element('b'), &comparator_char), &comparator_char);
+  printf("\nafter => ");
+  print_pre_order(tree, &display_char_element);
+
+  printf("\n\nRotate Left 0");
+  printf("\nbefore => ");
+  print_pre_order(tree, &display_char_element);
+  tree = rotate_left(tree, get_node_of(tree, create_char_element('a'), &comparator_char), &comparator_char);
+  printf("\nafter => ");
+  print_pre_order(tree, &display_char_element);
+  printf("\n\n");
 }
