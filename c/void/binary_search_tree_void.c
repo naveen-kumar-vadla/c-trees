@@ -138,3 +138,34 @@ Node_ptr rotate_left(Node_ptr root, Node_ptr pivot, Compare_Method *comparator)
   pivot_right->left = pivot;
   return pivot_right;
 }
+
+Array_void_ptr get_sorted_tree_list(Node_ptr root, Array_void_ptr array)
+{
+  if (root == NULL)
+    return array;
+  get_sorted_tree_list(root->left, array);
+  push_to_Array_void(array, root->value);
+  get_sorted_tree_list(root->right, array);
+  return array;
+}
+
+Node_ptr insert_array_into_tree(Node_ptr root, Array_void_ptr array, int from, int to, Compare_Method *comparator)
+{
+  for (int i = from; i < to; i++)
+  {
+    root = insert_into_tree(root, array->values[i], comparator);
+  }
+  return root;
+}
+
+Node_ptr balance_tree(Node_ptr root, Compare_Method *comparator)
+{
+  Node_ptr new_root = NULL;
+  Array_void_ptr tree_values_in_order = create_Array_void();
+  tree_values_in_order = get_sorted_tree_list(root, tree_values_in_order);
+  int pivot_index = (tree_values_in_order->length / 2);
+  new_root = insert_array_into_tree(new_root, tree_values_in_order, pivot_index, pivot_index + 1, comparator);
+  new_root = insert_array_into_tree(new_root, tree_values_in_order, 0, pivot_index, comparator);
+  new_root = insert_array_into_tree(new_root, tree_values_in_order, pivot_index + 1, tree_values_in_order->length, comparator);
+  return new_root;
+}
