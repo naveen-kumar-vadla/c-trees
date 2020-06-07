@@ -134,3 +134,34 @@ Node_ptr rotate_left(Node_ptr root, Node_ptr pivot)
   pivot_right->left = pivot;
   return pivot_right;
 }
+
+Int_Array_ptr get_sorted_tree_list(Node_ptr root, Int_Array_ptr array)
+{
+  if (root == NULL)
+    return array;
+  get_sorted_tree_list(root->left, array);
+  push_to_Int_Array(array, root->value);
+  get_sorted_tree_list(root->right, array);
+  return array;
+}
+
+Node_ptr insert_array_into_tree(Node_ptr root, Int_Array_ptr array, int from, int to)
+{
+  for (int i = from; i < to; i++)
+  {
+    root = insert_into_tree(root, array->values[i]);
+  }
+  return root;
+}
+
+Node_ptr balance_tree(Node_ptr root)
+{
+  Node_ptr new_root = NULL;
+  Int_Array_ptr tree_values_in_order = create_Int_Array();
+  tree_values_in_order = get_sorted_tree_list(root, tree_values_in_order);
+  int pivot_index = (tree_values_in_order->length / 2);
+  new_root = insert_array_into_tree(new_root, tree_values_in_order, pivot_index, pivot_index + 1);
+  new_root = insert_array_into_tree(new_root, tree_values_in_order, 0, pivot_index);
+  new_root = insert_array_into_tree(new_root, tree_values_in_order, pivot_index + 1, tree_values_in_order->length);
+  return new_root;
+}

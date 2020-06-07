@@ -70,4 +70,25 @@ int main()
   printf("\nafter => ");
   print_pre_order(tree);
   printf("\n\n");
+
+  tree = NULL;
+  tree = insert_into_tree(tree, 1);
+  tree = insert_into_tree(tree, 0);
+  tree = insert_into_tree(tree, 2);
+  tree = insert_into_tree(tree, 3);
+  tree = insert_into_tree(tree, 4);
+  tree = insert_into_tree(tree, 5);
+  tree = insert_into_tree(tree, 6);
+
+  printf("Before Balancing\n");
+
+  print_pre_order(tree);
+  printf("\n\n");
+
+  tree = balance_tree(tree);
+
+  printf("After Balancing\n");
+
+  print_pre_order(tree);
+  printf("\n\n");
 }
