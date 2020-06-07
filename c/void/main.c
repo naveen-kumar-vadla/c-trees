@@ -1,4 +1,5 @@
 #include "binary_search_tree_void.h"
+#include "traversals_void.h"
 
 Element create_int_element(int value)
 {
