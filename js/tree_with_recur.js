@@ -78,6 +78,31 @@ const rotate_left = (tree, pivot) => {
   return pivot_Right;
 };
 
+const get_sorted_tree_list = (tree, array) => {
+  if (tree == null) return array;
+  get_sorted_tree_list(tree.left, array);
+  array.push(tree.value);
+  get_sorted_tree_list(tree.right, array);
+  return array;
+};
+
+const balance_tree = tree => {
+  let new_tree = null;
+  let tree_values_in_order = [];
+  tree_values_in_order = get_sorted_tree_list(tree, tree_values_in_order);
+  const pivot_index = tree_values_in_order.length / 2;
+  new_tree = tree_values_in_order
+    .slice(pivot_index, pivot_index + 1)
+    .reduce(insert_node, new_tree);
+  new_tree = tree_values_in_order
+    .slice(0, pivot_index)
+    .reduce(insert_node, new_tree);
+  new_tree = tree_values_in_order
+    .slice(pivot_index + 1)
+    .reduce(insert_node, new_tree);
+  return new_tree;
+};
+
 module.exports = {
   insert_node,
   search_node,
@@ -85,4 +110,5 @@ module.exports = {
   rotate_left,
   rotate_right,
   get_node_of,
+  balance_tree,
 };

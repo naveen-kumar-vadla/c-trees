@@ -6,6 +6,7 @@ const {
   rotate_left,
   rotate_right,
   get_node_of,
+  balance_tree,
 } = require('./tree_with_recur');
 
 const main = () => {
@@ -38,6 +39,17 @@ const main = () => {
   Traversals.print_pre_order(tree);
   tree = rotate_left(tree, get_node_of(tree, 0));
   console.log('after =>');
+  Traversals.print_pre_order(tree);
+
+  values = [1, 0, 2, 3, 4, 5, 6];
+  tree = values.reduce(insert_node, null);
+
+  console.log('Before Balancing');
+  Traversals.print_pre_order(tree);
+
+  tree = balance_tree(tree);
+
+  console.log('After Balancing');
   Traversals.print_pre_order(tree);
 };
 
