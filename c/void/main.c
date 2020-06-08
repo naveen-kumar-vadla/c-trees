@@ -100,6 +100,7 @@ int main()
   result = search_in_node(tree, create_int_element(3), &comparator_int);
   printf("%d is %s in the list\n\n", 3, result ? "present" : "not present");
 
+  destroy_nodes(tree);
   tree = NULL;
   tree = insert_into_tree(tree, create_int_element(3), &comparator_int);
   tree = insert_into_tree(tree, create_int_element(1), &comparator_int);
@@ -123,6 +124,7 @@ int main()
   printf("\nafter => ");
   print_pre_order(tree, &display_int_element);
 
+  destroy_nodes(tree);
   tree = NULL;
   tree = insert_into_tree(tree, create_int_element(1), &comparator_int);
   tree = insert_into_tree(tree, create_int_element(0), &comparator_int);
@@ -146,6 +148,7 @@ int main()
 
   // ------------------------------------------------ Char Array ------------------------------------------------
 
+  destroy_nodes(tree);
   tree = NULL;
   tree = insert_into_tree(tree, create_char_element('d'), &comparator_char);
   tree = insert_into_tree(tree, create_char_element('b'), &comparator_char);
@@ -190,6 +193,7 @@ int main()
   result = search_in_node(tree, create_char_element('d'), &comparator_char);
   printf("%c is %s in the list\n\n", 'd', result ? "present" : "not present");
 
+  destroy_nodes(tree);
   tree = NULL;
   tree = insert_into_tree(tree, create_char_element('d'), &comparator_char);
   tree = insert_into_tree(tree, create_char_element('b'), &comparator_char);
@@ -214,6 +218,7 @@ int main()
   print_pre_order(tree, &display_char_element);
   printf("\n\n");
 
+  destroy_nodes(tree);
   tree = NULL;
   tree = insert_into_tree(tree, create_char_element('b'), &comparator_char);
   tree = insert_into_tree(tree, create_char_element('a'), &comparator_char);

@@ -38,4 +38,6 @@ Array_void_ptr get_sorted_tree_list(Node_ptr root, Array_void_ptr array);
 Node_ptr insert_array_into_tree(Node_ptr root, Array_void_ptr array, int from, int to, Compare_Method *comparator);
 Node_ptr balance_tree(Node_ptr root, Compare_Method *comparator);
 
+void destroy_nodes(Node_ptr root);
+
 #endif

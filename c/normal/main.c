@@ -47,6 +47,7 @@ int main()
   result = search_in_tree(tree, 3);
   printf("%d is %s in the list\n\n", 3, result ? "present" : "not present");
 
+  destroy_nodes(tree);
   tree = NULL;
   tree = insert_into_tree(tree, 3);
   tree = insert_into_tree(tree, 1);
@@ -71,6 +72,7 @@ int main()
   print_pre_order(tree);
   printf("\n\n");
 
+  destroy_nodes(tree);
   tree = NULL;
   tree = insert_into_tree(tree, 1);
   tree = insert_into_tree(tree, 0);
