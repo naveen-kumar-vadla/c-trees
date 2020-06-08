@@ -163,5 +163,6 @@ Node_ptr balance_tree(Node_ptr root)
   new_root = insert_array_into_tree(new_root, tree_values_in_order, pivot_index, pivot_index + 1);
   new_root = insert_array_into_tree(new_root, tree_values_in_order, 0, pivot_index);
   new_root = insert_array_into_tree(new_root, tree_values_in_order, pivot_index + 1, tree_values_in_order->length);
+  destroy_Int_Array(tree_values_in_order);
   return new_root;
 }

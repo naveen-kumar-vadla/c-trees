@@ -167,5 +167,6 @@ Node_ptr balance_tree(Node_ptr root, Compare_Method *comparator)
   new_root = insert_array_into_tree(new_root, tree_values_in_order, pivot_index, pivot_index + 1, comparator);
   new_root = insert_array_into_tree(new_root, tree_values_in_order, 0, pivot_index, comparator);
   new_root = insert_array_into_tree(new_root, tree_values_in_order, pivot_index + 1, tree_values_in_order->length, comparator);
+  destroy_Array_void(tree_values_in_order);
   return new_root;
 }
