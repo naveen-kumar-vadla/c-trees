@@ -51,7 +51,7 @@ Bool search_in_node(Node_ptr root, Element value, Compare_Method *comparator)
   return result;
 }
 
-Node_ptr get_min_of_right(Node_ptr root)
+Node_ptr get_min_of_tree(Node_ptr root)
 {
   Node_ptr min_of_right = root;
   while (min_of_right && min_of_right->left != NULL)
@@ -76,7 +76,7 @@ Node_ptr delete_node(Node_ptr root, Element value, Compare_Method *comparator)
       free(root);
       return temp;
     }
-    Node_ptr minOfRight = get_min_of_right(root->right);
+    Node_ptr minOfRight = get_min_of_tree(root->right);
     root->value = minOfRight->value;
     root->right = delete_node(root->right, minOfRight->value, comparator);
   }

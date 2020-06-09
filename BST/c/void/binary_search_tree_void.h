@@ -27,7 +27,7 @@ Node_ptr create_node(Element value);
 Node_ptr insert_into_tree(Node_ptr root, Element value, Compare_Method *comparator);
 Bool search_in_node(Node_ptr root, Element value, Compare_Method *comparator);
 
-Node_ptr get_min_of_right(Node_ptr root);
+Node_ptr get_min_of_tree(Node_ptr root);
 Node_ptr delete_node(Node_ptr root, Element value, Compare_Method *comparator);
 
 Node_ptr get_node_of(Node_ptr root, Element value, Compare_Method *comparator);

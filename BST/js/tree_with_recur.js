@@ -16,7 +16,7 @@ const search_node = (tree, value) => {
   return search_node(tree.right, value);
 };
 
-const get_min_of_right = tree => {
+const get_min_of_tree = tree => {
   let min_of_right = tree;
   while (min_of_right && min_of_right.left != null) {
     min_of_right = min_of_right.left;
@@ -31,7 +31,7 @@ const delete_node = (tree, value) => {
   if (value == tree.value) {
     if (tree.left == null || tree.right == null)
       return tree.left ? tree.left : tree.right;
-    const minOfRight = get_min_of_right(tree.right);
+    const minOfRight = get_min_of_tree(tree.right);
     tree.value = minOfRight.value;
     tree.right = delete_node(tree.right, minOfRight.value);
   }
