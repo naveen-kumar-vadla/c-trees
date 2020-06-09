@@ -17,11 +17,19 @@ const search_node = (tree, value) => {
 };
 
 const get_min_of_tree = tree => {
-  let min_of_right = tree;
-  while (min_of_right && min_of_right.left != null) {
-    min_of_right = min_of_right.left;
+  let min_of_tree = tree;
+  while (min_of_tree && min_of_tree.left != null) {
+    min_of_tree = min_of_tree.left;
   }
-  return min_of_right;
+  return min_of_tree;
+};
+
+const get_max_of_tree = tree => {
+  let max_of_tree = tree;
+  while (max_of_tree && max_of_tree.right != null) {
+    max_of_tree = max_of_tree.right;
+  }
+  return max_of_tree;
 };
 
 const delete_node = (tree, value) => {
@@ -111,4 +119,6 @@ module.exports = {
   rotate_right,
   get_node_of,
   balance_tree,
+  get_max_of_tree,
+  get_min_of_tree,
 };

@@ -7,6 +7,8 @@ const {
   rotate_right,
   get_node_of,
   balance_tree,
+  get_max_of_tree,
+  get_min_of_tree,
 } = require('./tree_with_recur');
 
 const main = () => {
@@ -15,6 +17,11 @@ const main = () => {
 
   console.log('tree =>');
   Traversals.print_in_order(tree);
+
+  const min_of_tree = get_min_of_tree(tree);
+  const max_of_tree = get_max_of_tree(tree);
+  console.log('Min of Tree', min_of_tree.value);
+  console.log('Max of Tree', max_of_tree.value);
 
   let result = search_node(tree, 3);
   console.log(3, 'is', result ? '' : 'not', 'present in the tree.');

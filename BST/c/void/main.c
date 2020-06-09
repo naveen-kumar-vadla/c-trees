@@ -79,6 +79,15 @@ int main()
   print_post_order(tree, &display_int_element);
   printf("\n\n");
 
+  Node_ptr min_of_tree = get_min_of_tree(tree);
+  Node_ptr max_of_tree = get_max_of_tree(tree);
+  printf("Min of Tree ");
+  display_int_element(min_of_tree->value);
+  printf("\n");
+  printf("Max of Tree ");
+  display_int_element(max_of_tree->value);
+  printf("\n");
+
   Bool result = search_in_node(tree, create_int_element(3), &comparator_int);
   printf("%d is %s in the list\n\n", 3, result ? "present" : "not present");
 
@@ -123,6 +132,7 @@ int main()
   tree = rotate_left(tree, get_node_of(tree, create_int_element(0), &comparator_int), &comparator_int);
   printf("\nafter => ");
   print_pre_order(tree, &display_int_element);
+  printf("\n\n");
 
   destroy_nodes(tree);
   tree = NULL;
@@ -171,6 +181,15 @@ int main()
   printf("post_order\n");
   print_post_order(tree, &display_char_element);
   printf("\n\n");
+
+  min_of_tree = get_min_of_tree(tree);
+  max_of_tree = get_max_of_tree(tree);
+  printf("Min of Tree ");
+  display_char_element(min_of_tree->value);
+  printf("\n");
+  printf("Max of Tree ");
+  display_char_element(max_of_tree->value);
+  printf("\n");
 
   result = search_in_node(tree, create_char_element('d'), &comparator_char);
   printf("%c is %s in the list\n\n", 'd', result ? "present" : "not present");

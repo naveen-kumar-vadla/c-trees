@@ -53,12 +53,22 @@ Bool search_in_tree(Node_ptr root, int value)
 
 Node_ptr get_min_of_tree(Node_ptr root)
 {
-  Node_ptr min_of_right = root;
-  while (min_of_right && min_of_right->left != NULL)
+  Node_ptr min_of_tree = root;
+  while (min_of_tree && min_of_tree->left != NULL)
   {
-    min_of_right = min_of_right->left;
+    min_of_tree = min_of_tree->left;
   }
-  return min_of_right;
+  return min_of_tree;
+}
+
+Node_ptr get_max_of_tree(Node_ptr root)
+{
+  Node_ptr max_of_tree = root;
+  while (max_of_tree && max_of_tree->right != NULL)
+  {
+    max_of_tree = max_of_tree->right;
+  }
+  return max_of_tree;
 }
 
 Node_ptr delete_node(Node_ptr root, int value)

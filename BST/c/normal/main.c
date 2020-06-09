@@ -26,6 +26,11 @@ int main()
   print_post_order(tree);
   printf("\n\n");
 
+  Node_ptr min_of_tree = get_min_of_tree(tree);
+  Node_ptr max_of_tree = get_max_of_tree(tree);
+  printf("Min of Tree %d\n", min_of_tree->value);
+  printf("Max of Tree %d\n", max_of_tree->value);
+
   Bool result = search_in_tree(tree, 3);
   printf("%d is %s in the list\n\n", 3, result ? "present" : "not present");
 
