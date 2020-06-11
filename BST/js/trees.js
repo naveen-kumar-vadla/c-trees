@@ -17,6 +17,7 @@ const main = () => {
 
   console.log('tree =>');
   Traversals.print_in_order(tree);
+  console.log('\n');
 
   const min_of_tree = get_min_of_tree(tree);
   const max_of_tree = get_max_of_tree(tree);
@@ -29,6 +30,7 @@ const main = () => {
   tree = delete_node(tree, 3);
   console.log('tree =>');
   Traversals.print_in_order(tree);
+  console.log('\n');
 
   result = search_node(tree, 3);
   console.log(3, 'is', result ? '' : 'not', 'present in the tree.');
@@ -37,27 +39,33 @@ const main = () => {
   console.log('Rotate Right 1');
   console.log('before =>');
   Traversals.print_pre_order(tree);
+  console.log('\n');
   tree = rotate_right(tree, get_node_of(tree, 1));
   console.log('after =>');
   Traversals.print_pre_order(tree);
+  console.log('\n');
 
   console.log('Rotate Left 0');
   console.log('before =>');
   Traversals.print_pre_order(tree);
+  console.log('\n');
   tree = rotate_left(tree, get_node_of(tree, 0));
   console.log('after =>');
   Traversals.print_pre_order(tree);
+  console.log('\n');
 
   values = [1, 0, 2, 3, 4, 5, 6];
   tree = values.reduce(insert_node, null);
 
   console.log('Before Balancing');
   Traversals.print_pre_order(tree);
+  console.log('\n');
 
   tree = balance_tree(tree);
 
   console.log('After Balancing');
   Traversals.print_pre_order(tree);
+  console.log('\n');
 };
 
 main();
