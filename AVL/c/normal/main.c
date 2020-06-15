@@ -36,7 +36,13 @@ int main()
   printf("Min of Tree %d\n", min_of_tree->value);
   printf("Max of Tree %d\n", max_of_tree->value);
 
+  Bool result = search_in_tree(tree, 2);
+  printf("%d is %s in the list\n\n", 2, result ? "present" : "not present");
+
   tree = delete_node(tree, 2);
   printf("\nTree after deleting 2\n");
   display_tree_in_all_traversals(tree);
+
+  result = search_in_tree(tree, 2);
+  printf("%d is %s in the list\n\n", 2, result ? "present" : "not present");
 }

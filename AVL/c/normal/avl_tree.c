@@ -121,3 +121,14 @@ Node_ptr delete_node(Node_ptr root, int value)
   }
   return balance_tree(root, value);
 }
+
+Bool search_in_tree(Node_ptr root, int value)
+{
+  if (root == NULL)
+    return False;
+  if (value == root->value)
+    return True;
+  if (value < root->value)
+    return search_in_tree(root->left, value);
+  return search_in_tree(root->right, value);
+}

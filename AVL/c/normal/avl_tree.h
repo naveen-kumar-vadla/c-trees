@@ -6,12 +6,19 @@
 
 #include "node.h"
 
+typedef enum
+{
+  False,
+  True
+} Bool;
+
 #define MAX(a, b) a > b ? a : b;
 
 Node_ptr create_node(int value);
 
 Node_ptr insert_into_tree(Node_ptr root, int value);
 Node_ptr delete_node(Node_ptr root, int value);
+Bool search_in_tree(Node_ptr root, int value);
 
 Node_ptr get_min_of_tree(Node_ptr root);
 Node_ptr get_max_of_tree(Node_ptr root);
