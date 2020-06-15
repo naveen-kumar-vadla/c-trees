@@ -83,4 +83,17 @@ const delete_node = (tree, value) => {
   return balance_tree(tree, value);
 };
 
-module.exports = { insert_node, get_max_of_tree, get_min_of_tree, delete_node };
+const search_node = (tree, value) => {
+  if (tree == null) return false;
+  if (value == tree.value) return true;
+  if (value < tree.value) return search_node(tree.left, value);
+  return search_node(tree.right, value);
+};
+
+module.exports = {
+  insert_node,
+  get_max_of_tree,
+  get_min_of_tree,
+  delete_node,
+  search_node,
+};

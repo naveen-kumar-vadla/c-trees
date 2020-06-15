@@ -4,6 +4,7 @@ const {
   get_max_of_tree,
   get_min_of_tree,
   delete_node,
+  search_node,
 } = require('./tree');
 
 const display_tree_in_all_traversals = tree => {
@@ -29,9 +30,15 @@ const main = () => {
   console.log('Min of Tree', min_of_tree.value);
   console.log('Max of Tree', max_of_tree.value);
 
+  let result = search_node(tree, 2);
+  console.log(2, 'is', result ? '' : 'not', 'present in the tree.');
+
   tree = delete_node(tree, 2);
   console.log('\nTree after deleting 2');
   display_tree_in_all_traversals(tree);
+
+  result = search_node(tree, 2);
+  console.log(2, 'is', result ? '' : 'not', 'present in the tree.');
 };
 
 main();
