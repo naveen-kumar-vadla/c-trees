@@ -54,4 +54,20 @@ const insert_node = (tree, value) => {
   return balance_tree(tree, value);
 };
 
-module.exports = { insert_node };
+const get_min_of_tree = tree => {
+  let min_of_tree = tree;
+  while (min_of_tree && min_of_tree.left != null) {
+    min_of_tree = min_of_tree.left;
+  }
+  return min_of_tree;
+};
+
+const get_max_of_tree = tree => {
+  let max_of_tree = tree;
+  while (max_of_tree && max_of_tree.right != null) {
+    max_of_tree = max_of_tree.right;
+  }
+  return max_of_tree;
+};
+
+module.exports = { insert_node, get_max_of_tree, get_min_of_tree };
