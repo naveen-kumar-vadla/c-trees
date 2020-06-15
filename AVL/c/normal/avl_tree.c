@@ -100,3 +100,24 @@ Node_ptr get_max_of_tree(Node_ptr root)
   }
   return max_of_tree;
 }
+
+Node_ptr delete_node(Node_ptr root, int value)
+{
+  if (root == NULL)
+    return root;
+  root->left = value < root->value ? delete_node(root->left, value) : root->left;
+  root->right = value > root->value ? delete_node(root->right, value) : root->right;
+  if (value == root->value)
+  {
+    if (root->left == NULL || root->right == NULL)
+    {
+      Node_ptr temp = root->left ? root->left : root->right;
+      free(root);
+      return temp;
+    }
+    Node_ptr minOfRight = get_min_of_tree(root->right);
+    root->value = minOfRight->value;
+    root->right = delete_node(root->right, minOfRight->value);
+  }
+  return balance_tree(root, value);
+}

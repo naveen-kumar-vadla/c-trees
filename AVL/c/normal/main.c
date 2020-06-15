@@ -35,4 +35,7 @@ int main()
   Node_ptr max_of_tree = get_max_of_tree(tree);
   printf("Min of Tree %d\n", min_of_tree->value);
   printf("Max of Tree %d\n", max_of_tree->value);
+
+  tree = delete_node(tree, 2);
+  display_tree_in_all_traversals(tree);
 }
