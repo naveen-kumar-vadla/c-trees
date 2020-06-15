@@ -92,6 +92,9 @@ int main()
   display_int_element(max_of_tree->value);
   printf("\n\n");
 
+  tree = delete_node(tree, create_int_element(2), &comparator_int);
+  display_tree_in_all_traversals(tree, &display_int_element);
+
   // ------------------------------------------------ Char Array ------------------------------------------------
 
   tree = NULL;
@@ -115,4 +118,7 @@ int main()
   printf("Max of Tree ");
   display_char_element(max_of_tree->value);
   printf("\n\n");
+
+  tree = delete_node(tree, create_char_element('c'), &comparator_char);
+  display_tree_in_all_traversals(tree, &display_char_element);
 }

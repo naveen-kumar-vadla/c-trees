@@ -101,3 +101,25 @@ Node_ptr get_max_of_tree(Node_ptr root)
   }
   return max_of_tree;
 }
+
+Node_ptr delete_node(Node_ptr root, Element value, Compare_Method *comparator)
+{
+  if (root == NULL)
+    return root;
+  Compare_Status result = (*comparator)(value, root->value);
+  root->left = result == Lesser ? delete_node(root->left, value, comparator) : root->left;
+  root->right = result == Greater ? delete_node(root->right, value, comparator) : root->right;
+  if (result == Equal)
+  {
+    if (root->left == NULL || root->right == NULL)
+    {
+      Node_ptr temp = root->left ? root->left : root->right;
+      free(root);
+      return temp;
+    }
+    Node_ptr minOfRight = get_min_of_tree(root->right);
+    root->value = minOfRight->value;
+    root->right = delete_node(root->right, minOfRight->value, comparator);
+  }
+  return balance_tree(root, value, comparator);
+}
