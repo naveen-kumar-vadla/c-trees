@@ -30,6 +30,7 @@ const main = () => {
   console.log('Max of Tree', max_of_tree.value);
 
   tree = delete_node(tree, 2);
+  console.log('\nTree after deleting 2');
   display_tree_in_all_traversals(tree);
 };
 

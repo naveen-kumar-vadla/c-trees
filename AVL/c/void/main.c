@@ -93,6 +93,7 @@ int main()
   printf("\n\n");
 
   tree = delete_node(tree, create_int_element(2), &comparator_int);
+  printf("Tree after deleting 2\n");
   display_tree_in_all_traversals(tree, &display_int_element);
 
   // ------------------------------------------------ Char Array ------------------------------------------------
@@ -120,5 +121,6 @@ int main()
   printf("\n\n");
 
   tree = delete_node(tree, create_char_element('c'), &comparator_char);
+  printf("Tree after deleting c\n");
   display_tree_in_all_traversals(tree, &display_char_element);
 }
