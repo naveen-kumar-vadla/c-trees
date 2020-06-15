@@ -70,4 +70,17 @@ const get_max_of_tree = tree => {
   return max_of_tree;
 };
 
-module.exports = { insert_node, get_max_of_tree, get_min_of_tree };
+const delete_node = (tree, value) => {
+  tree.left = value < tree.value ? delete_node(tree.left, value) : tree.left;
+  tree.right = value > tree.value ? delete_node(tree.right, value) : tree.right;
+  if (value == tree.value) {
+    if (tree.left == null || tree.right == null)
+      return tree.left ? tree.left : tree.right;
+    const minOfRight = get_min_of_tree(tree.right);
+    tree.value = minOfRight.value;
+    tree.right = delete_node(tree.right, minOfRight.value);
+  }
+  return balance_tree(tree, value);
+};
+
+module.exports = { insert_node, get_max_of_tree, get_min_of_tree, delete_node };
