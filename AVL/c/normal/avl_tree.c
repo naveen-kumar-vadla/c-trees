@@ -53,18 +53,16 @@ Node_ptr right_rotate(Node_ptr root)
 Node_ptr balance_tree(Node_ptr root, int value)
 {
   int balance_factor = get_balance_factor(root);
-  if (balance_factor > 1 && value < root->left->value)
-    return right_rotate(root);
-  if (balance_factor < -1 && value > root->right->value)
-    return left_rotate(root);
-  if (balance_factor > 1 && value > root->left->value)
+  if (balance_factor > 1)
   {
-    root->left = left_rotate(root->left);
+    if (value > root->left->value)
+      root->left = left_rotate(root->left);
     return right_rotate(root);
   }
-  if (balance_factor < -1 && value < root->right->value)
+  if (balance_factor < -1)
   {
-    root->right = right_rotate(root->right);
+    if (value < root->right->value)
+      root->right = right_rotate(root->right);
     return left_rotate(root);
   }
   return root;

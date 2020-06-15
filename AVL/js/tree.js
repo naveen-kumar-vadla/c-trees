@@ -34,14 +34,12 @@ const right_rotate = tree => {
 
 const balance_tree = (tree, value) => {
   const balance_factor = get_balance_factor(tree);
-  if (balance_factor > 1 && value < tree.left.value) return right_rotate(tree);
-  if (balance_factor < -1 && value > tree.right.value) return left_rotate(tree);
-  if (balance_factor > 1 && value > tree.left.value) {
-    tree.left = left_rotate(tree.left);
+  if (balance_factor > 1) {
+    if (value > tree.left.value) tree.left = left_rotate(tree.left);
     return right_rotate(tree);
   }
-  if (balance_factor < -1 && value < tree.right.value) {
-    tree.right = right_rotate(tree.right);
+  if (balance_factor < -1) {
+    if (value < tree.right.value) tree.right = right_rotate(tree.right);
     return left_rotate(tree);
   }
   return tree;

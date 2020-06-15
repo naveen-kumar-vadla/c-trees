@@ -71,7 +71,6 @@ int main()
 {
   // ------------------------------------------------ Int Array ------------------------------------------------
   Node_ptr tree = NULL;
-  tree = insert_into_tree(tree, create_int_element(0), &comparator_int);
   tree = insert_into_tree(tree, create_int_element(1), &comparator_int);
   tree = insert_into_tree(tree, create_int_element(2), &comparator_int);
   tree = insert_into_tree(tree, create_int_element(3), &comparator_int);
@@ -81,6 +80,7 @@ int main()
   tree = insert_into_tree(tree, create_int_element(7), &comparator_int);
   tree = insert_into_tree(tree, create_int_element(8), &comparator_int);
   tree = insert_into_tree(tree, create_int_element(9), &comparator_int);
+  tree = insert_into_tree(tree, create_int_element(0), &comparator_int);
   display_tree_in_all_traversals(tree, &display_int_element);
 
   Node_ptr min_of_tree = get_min_of_tree(tree);
@@ -105,7 +105,6 @@ int main()
   // ------------------------------------------------ Char Array ------------------------------------------------
 
   tree = NULL;
-  tree = insert_into_tree(tree, create_char_element('a'), &comparator_char);
   tree = insert_into_tree(tree, create_char_element('b'), &comparator_char);
   tree = insert_into_tree(tree, create_char_element('c'), &comparator_char);
   tree = insert_into_tree(tree, create_char_element('d'), &comparator_char);
@@ -115,6 +114,7 @@ int main()
   tree = insert_into_tree(tree, create_char_element('h'), &comparator_char);
   tree = insert_into_tree(tree, create_char_element('i'), &comparator_char);
   tree = insert_into_tree(tree, create_char_element('j'), &comparator_char);
+  tree = insert_into_tree(tree, create_char_element('a'), &comparator_char);
   display_tree_in_all_traversals(tree, &display_char_element);
 
   min_of_tree = get_min_of_tree(tree);
