@@ -123,3 +123,15 @@ Node_ptr delete_node(Node_ptr root, Element value, Compare_Method *comparator)
   }
   return balance_tree(root, value, comparator);
 }
+
+Bool search_in_tree(Node_ptr root, Element value, Compare_Method *comparator)
+{
+  if (root == NULL)
+    return False;
+  Compare_Status result = (*comparator)(value, root->value);
+  if (result == Equal)
+    return True;
+  if (result == Lesser)
+    return search_in_tree(root->left, value, comparator);
+  return search_in_tree(root->right, value, comparator);
+}

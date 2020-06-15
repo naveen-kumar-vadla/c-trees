@@ -92,9 +92,15 @@ int main()
   display_int_element(max_of_tree->value);
   printf("\n\n");
 
+  Bool result = search_in_tree(tree, create_int_element(2), &comparator_int);
+  printf("%d is %s in the list\n\n", 2, result ? "present" : "not present");
+
   tree = delete_node(tree, create_int_element(2), &comparator_int);
   printf("Tree after deleting 2\n");
   display_tree_in_all_traversals(tree, &display_int_element);
+
+  result = search_in_tree(tree, create_int_element(2), &comparator_int);
+  printf("%d is %s in the list\n\n", 2, result ? "present" : "not present");
 
   // ------------------------------------------------ Char Array ------------------------------------------------
 
@@ -120,7 +126,13 @@ int main()
   display_char_element(max_of_tree->value);
   printf("\n\n");
 
+  result = search_in_tree(tree, create_char_element('c'), &comparator_char);
+  printf("%c is %s in the list\n\n", 'c', result ? "present" : "not present");
+
   tree = delete_node(tree, create_char_element('c'), &comparator_char);
   printf("Tree after deleting c\n");
   display_tree_in_all_traversals(tree, &display_char_element);
+
+  result = search_in_tree(tree, create_char_element('c'), &comparator_char);
+  printf("%c is %s in the list\n\n", 'c', result ? "present" : "not present");
 }
