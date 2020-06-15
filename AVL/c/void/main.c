@@ -83,6 +83,15 @@ int main()
   tree = insert_into_tree(tree, create_int_element(9), &comparator_int);
   display_tree_in_all_traversals(tree, &display_int_element);
 
+  Node_ptr min_of_tree = get_min_of_tree(tree);
+  Node_ptr max_of_tree = get_max_of_tree(tree);
+  printf("Min of Tree ");
+  display_int_element(min_of_tree->value);
+  printf("\n");
+  printf("Max of Tree ");
+  display_int_element(max_of_tree->value);
+  printf("\n\n");
+
   // ------------------------------------------------ Char Array ------------------------------------------------
 
   tree = NULL;
@@ -97,4 +106,13 @@ int main()
   tree = insert_into_tree(tree, create_char_element('i'), &comparator_char);
   tree = insert_into_tree(tree, create_char_element('j'), &comparator_char);
   display_tree_in_all_traversals(tree, &display_char_element);
+
+  min_of_tree = get_min_of_tree(tree);
+  max_of_tree = get_max_of_tree(tree);
+  printf("Min of Tree ");
+  display_char_element(min_of_tree->value);
+  printf("\n");
+  printf("Max of Tree ");
+  display_char_element(max_of_tree->value);
+  printf("\n\n");
 }

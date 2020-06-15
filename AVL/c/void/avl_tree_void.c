@@ -81,3 +81,23 @@ Node_ptr insert_into_tree(Node_ptr root, Element value, Compare_Method *comparat
     root->right = insert_into_tree(root->right, value, comparator);
   return balance_tree(root, value, comparator);
 }
+
+Node_ptr get_min_of_tree(Node_ptr root)
+{
+  Node_ptr min_of_tree = root;
+  while (min_of_tree != NULL && min_of_tree->left != NULL)
+  {
+    min_of_tree = min_of_tree->left;
+  }
+  return min_of_tree;
+}
+
+Node_ptr get_max_of_tree(Node_ptr root)
+{
+  Node_ptr max_of_tree = root;
+  while (max_of_tree != NULL && max_of_tree->right != NULL)
+  {
+    max_of_tree = max_of_tree->right;
+  }
+  return max_of_tree;
+}
